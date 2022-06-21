@@ -2,9 +2,9 @@ const express = require("express");
 const https = require("https");
 const bodyParser = require("body-parser");
 const app = express();
+require('dotenv').config();
 const port = 3000;
 app.use(bodyParser.urlencoded({extended: true}));
-
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
 app.post("/", (req, res) => {
 
     const query = req.body.cityName; 
-    const apiKey = config.SECRET_API_KEY;
+    const apiKey = process.env.API_KEY;
     const units = "imperial";
 
     const url =
